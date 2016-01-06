@@ -1,12 +1,17 @@
 <!-- navbar -->
+
+
 <div id="nav-container">
     <div class="container">
-        <img id="logo-image" src="./css/dibs3.png" alt="Ball Script Logo">
+        <button type="button" class="btn btn-default navbar-btn navbar-right" ng-click="ifValue=!ifValue">Switch View</button>
+        <img id="logo-image" src="./css/dibs3.png" alt="Dibs Logo">
+
     </div>
 </div>
+
 <div class="container">
     <div class="row">
-        <div class="col-md-5">
+        <div class="col-md-6">
             <div class="nav nav-list">
                 <div class="sideBar">
                     <!-- Angular datePicker -->
@@ -14,8 +19,8 @@
                     <div class="input-group">
                         <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="eve.eventDate" is-open="status.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
                         <span class="input-group-btn">
-                <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-              </span>
+                            <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
                     </div>
                     <!-- Angular datePicker End -->
                     <!-- Angular TimePicker -->
@@ -46,9 +51,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-1"></div>
-        <input type="checkbox" ng-click="ifValue=!ifValue">button yo</input>
-        <div class="col-md-1"></div>
+        
         <div class="col-md-6" class="bs-callout bs-callout-info" ng-if="showIf()" ng-init="renderSideDashboard()" ui-view>
             <!--9 make it for now that each event saved is displayed to this view  -->
         </div>
