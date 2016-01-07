@@ -22,12 +22,19 @@ angular.module('eventsInfoFactory', [])
       });
     };
 
+    var getAllData = function() {
+      return $http({
+        method: 'GET',
+        url: '/api/events/allevents'
+      });
+    };
+
     var formatData = function(events) {
       var eventsCollection = events.data,
         eventDates,
         formattedDate,
         eventTimes;
-        console.log("FORMAT DATA IN EVENTFACTORY.JS",events);
+      console.log("FORMAT DATA IN EVENTFACTORY.JS", events);
 
       eventsCollection.forEach(function(event) {
         eventDates = event.eventDate;
@@ -43,9 +50,44 @@ angular.module('eventsInfoFactory', [])
       return eventsCollection;
     };
 
+    var formatAllData = function(events) {
+      var eventsCollection = events.data,
+        eventDates,
+        formattedDate,
+        eventTimes,
+        tasks = [];
+      // console.log("FORMATALLDATA IN EVENTFACTORY.JS", events);
+      // console.log("TEST");
+      eventsCollection.forEach(function(event) {
+        var task = {
+          startDate: null,
+          endDate: null,
+          taskName: null,
+          status: null
+        };
+        startDate = event.eventDate;
+        endDate = event.eventEndDate;
+        formattedDate = moment(startDate).format("ddd MMM D");
+        formattedTime = moment(startDate).format('H:mm:ss YYYY');
+        event.eventDate = formattedDate;
+        event.eventEndDate = moment(endDate).format("ddd MMM D");
+        event.eventTime = formattedTime;
+        event.eventEndTime = moment(endDate).format('H:mm:ss YYYY');
+        task.startDate = event.eventDate + " " + event.eventTime;
+        task.endDate = event.eventEndDate + " " + event.eventEndTime;
+        task.taskName = event.roomName;
+        task.status = event.user;
+        tasks.push(task);
+      });
+
+      return tasks;
+    };
+
     return {
       eventData: eventData,
       getData: getData,
-      formatData: formatData
+      formatData: formatData,
+      getAllData: getAllData,
+      formatAllData: formatAllData
     };
   });
