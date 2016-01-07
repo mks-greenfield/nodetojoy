@@ -1,7 +1,8 @@
 body {
     background-color: #FFF;
     height: 100%;
-    padding-bottom: 50px;
+    padding-bottom: 70px;
+
 }
 
 h3 {
@@ -31,13 +32,14 @@ h3 {
 }
 
 #nav-container {
-    background-color: #FF4A00;
+    background-color: #278D8E;
     width: 100%;
     margin-bottom: 25px;
+    padding-bottom: 10px;
 }
 
 #bannerText {
-    color: #FF4A00;
+    color: #278D8E;
     text-align: center;
 }
 
@@ -69,7 +71,7 @@ h3 {
     display: inline-block;
     float: right;
     margin-top: 10px;
-    background: #FF4A00;
+    background: #278D8E;
     border-radius: 3px;
     border: none;
     color: #fff;
@@ -78,9 +80,7 @@ h3 {
     padding: 0.25em 0.9em 0.75em 0.9em;
 }
 
-#logout-btn:hover {
-    background: #CF2A00 !important;
-}
+
 
 .sideBar {
     background-color: #f7f7f9;
@@ -95,7 +95,6 @@ h3 {
 #events-sidebar {
     background-color: #f7f7f9;
     border: 1px solid #DADFE2;
-    border-color: black;
     padding: 20px;
     margin-top: 20px;
     height: 410px;
@@ -142,7 +141,7 @@ h3 {
     margin-top: 10px;
     margin-left: 0px;
     width: 100%;
-    background: #FF4A00;
+    background: #278D8E;
     border-radius: 3px;
     border: none;
     color: #fff;
@@ -151,12 +150,9 @@ h3 {
     padding: 0.78em 0.9em 0.75em 0.9em;
 }
 
-.submit-btn:hover {
-    background: #CF2A00 !important;
-}
 
 .btn-primary {
-    background: #FF4A00 !important;
+    background: #278D8E !important;
     border-color: black !important;
 }
 
@@ -203,4 +199,8 @@ h3 {
 }
 .navbar-brand {
     font-family: 'Yellowtail', cursive;
+}
+
+.navbar-fixed-bottom {
+    background-color: rgb(21, 29, 29);
 }

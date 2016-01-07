@@ -1,7 +1,7 @@
 <!-- navbar -->
 <div id="nav-container">
   <div class="container">
-    <button type="button" class="btn btn-default navbar-btn navbar-right" ng-click="ifValue=!ifValue">Switch View</button>
+    <button type="button" id="logo-image" class="btn btn-default navbar-btn navbar-right" ng-click="ifValue=!ifValue">Switch View</button>
     <img id="logo-image" src="./css/dibs3.png" alt="Dibs Logo">
   </div>
 </div>
@@ -15,16 +15,16 @@
           <div class="input-group">
             <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="eve.eventDate" is-open="status.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
             <span class="input-group-btn">
-                            <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-                        </span>
+              <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+            </span>
           </div>
           <!-- Angular datePicker End (start date)-->
           <!-- Angular datePicker (end date)-->
           <div class="input-group">
             <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="eve.eventEndDate" is-open="status.opened2" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
             <span class="input-group-btn">
-                            <button type="button" class="btn btn-default" ng-click="openEnd($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-                        </span>
+              <button type="button" class="btn btn-default" ng-click="openEnd($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+            </span>
           </div>
           <!-- Angular datePicker End (end date)-->
           <!-- Angular TimePicker (start time)-->
@@ -48,17 +48,20 @@
             <input class="standardInputStyling" ng-model="eve.eventDescription" placeholder="Dibs description..."></input>
           </div>
           <h4>Pick a room</h4>
-          <div class="btn-group">
-            <label class="btn btn-success room-btn" ng-model="eve.roomName" uib-btn-radio="'Kitchen'" uncheckable>Kitchen</label>
-            <label class="btn btn-success room-btn" ng-model="eve.roomName" uib-btn-radio="'Living Room'" uncheckable>Living Room</label>
-            <label class="btn btn-success room-btn" ng-model="eve.roomName" uib-btn-radio="'Entire House'" uncheckable>Entire House</label>
+
+          <div class="btn-group" role="group" aria-label="...">
+            <button type="button" class="btn btn-default" ng-model="eve.roomName" uib-btn-radio="'Kitchen'">Kitchen</button>
+            <button type="button" class="btn btn-default" ng-model="eve.roomName" uib-btn-radio="'Living Room'">Living Room</button>
+            <button type="button" class="btn btn-default" ng-model="eve.roomName" uib-btn-radio="'Entire House'">Entire House</button>
           </div>
           <div>
             <h4>Alert Roommates</h4>
             <input type="checkbox" ng-model="eve.eventAlert"><span id="alert-roommates-padding">Please Alert Roommates</span></input>
           </div>
           <button class="submit-btn" type="submit" ng-click="eventSubmit()">Set Room Dibs!!!</button>
+
           <button class="submit-btn" type="submit" ng-click="addToGoogleCal()">add to Google Calendar</button>
+
           <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">
             {{alert.msg}}
             <a href={{alert.url}} target="_blank">here</a>
@@ -73,11 +76,12 @@
     <div class="col-md-6" class="bs-callout bs-callout-warning" ng-if="hideIf()" ng-init="renderSideDashboardChart2()" ui-view>
       <!--9 make it for now that each event saved is displayed to this view  -->
     </div>
-    <button ng-click="getEventDataButton()">test button</button>
+    
+    <button ng-click="getEventDataButton()">test button</button> 
   </div>
 </div>
 <!-- footer -->
-<div class="navbar navbar-fixed-bottom" role="footer" style="background-color: #f7f7f9">
+<div class="navbar navbar-fixed-bottom" role="footer">
   <div class="container">
     <p id="copyright-text">© 2016 Dibs</p>
     <button id="logout-btn" type="submit" ng-click="signout()">Logout</button>
