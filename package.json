@@ -25,6 +25,7 @@
     "express": "^4.13.3",
     "express-session": "1.12.1",
     "foreman": "1.4.1",
+    "googleapis": "2.1.7",
     "grunt": "0.4.5",
     "grunt-contrib-jshint": "0.11.3",
     "grunt-contrib-watch": "0.6.1",

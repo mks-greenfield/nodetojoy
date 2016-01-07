@@ -1,4 +1,4 @@
-angular.module('eventsInfo', [])
+angular.module('eventsInfo', ['ui.bootstrap'])
   .constant('moment', moment)
   .controller('eventsController', function($scope, $state, Eventstored, moment, $interval, $window, $http) {
     $scope.eve = {};
@@ -12,6 +12,17 @@ angular.module('eventsInfo', [])
     $scope.eve.user = 'SimonTestForBrandon';
     $scope.eve.houseName = 'Hacker House';
 
+    //an alert is created when an event is pushed to Google Calendar
+    $scope.alerts = [];
+
+    $scope.closeAlert = function(index) {
+      $scope.alerts.splice(index, 1);
+    };
+
+    $scope.addAlert = function(alert) {
+      $scope.alerts.push(alert);
+    };
+
     $scope.ifValue = true;
     $scope.showIf = function() {
       return $scope.ifValue;
@@ -22,7 +33,7 @@ angular.module('eventsInfo', [])
 
     $scope.refreshEvents = function() {
       Eventstored.getData().then(function(events) {
-        
+
 
         var allEvents = events.data;
         //console.log(allEvents);
@@ -54,26 +65,21 @@ angular.module('eventsInfo', [])
         }
         var formattedEvents = Eventstored.formatData(events);
         $scope.bookedEvents = formattedEvents;
-      },function errorCallback(response) {
+      }, function errorCallback(response) {
 
         //do not have access to events resource
         //user must not be logged in
         //redirect to signup
 
         $state.go('signupPage');
-        
-        console.log("RESPONSE",response);
+
+        console.log("RESPONSE", response);
 
       });
 
       // removing past daily dibs every 30s
       //$scope.refreshEvents();
     };
-
-    $scope.renderSideDashboardChart = function() {
-      $state.go('dashboardPage.eventsChart');
-    };
-
 
     $scope.highlightEvents = function(event) {
       //console.log('test', event.diff);
@@ -98,6 +104,27 @@ angular.module('eventsInfo', [])
       // Eventstored.getData();
       $scope.refreshEvents();
       $scope.renderSideDashboard();
+      $scope.refreshAllEvents();
+      $scope.renderSideDashboardChart();
+    };
+
+    $scope.addToGoogleCal = function() {
+      // console.log("hey now",$scope.eve);
+      return $http({
+        method: 'POST',
+        url: '/api/events/googlecal',
+        data: {
+          event: $scope.eve
+        }
+      }).then(function(response) {
+        console.log("created google calendar event", response);
+        var successMessage = "Successfully added to Google Calendar! View the event "
+        $scope.addAlert({
+          type: 'success',
+          msg: successMessage,
+          url: response.data
+        });
+      });
     };
 
     $scope.signout = function() {
@@ -107,17 +134,17 @@ angular.module('eventsInfo', [])
         method: 'GET',
         url: '/logout'
       }).then(function successCallback(response) {
-          // this callback will be called asynchronously
-          console.log("I'm signing out");
-          $window.localStorage.clear();
-          $state.go('signupPage');
-          // when the response is available
-        }, function errorCallback(response) {
-          // called asynchronously if an error occurs
-          // or server returns response with an error status.
-        });
+        // this callback will be called asynchronously
+        console.log("I'm signing out");
+        $window.localStorage.clear();
+        $state.go('signupPage');
+        // when the response is available
+      }, function errorCallback(response) {
+        // called asynchronously if an error occurs
+        // or server returns response with an error status.
+      });
 
-      };
+    };
 
     $scope.getUserInfo = function() {
       //remove jwt here
@@ -126,15 +153,15 @@ angular.module('eventsInfo', [])
         method: 'GET',
         url: '/api/events/user'
       }).then(function successCallback(response) {
-          // this callback will be called asynchronously
-          console.log("getting user info");
-          $scope.eve.user = response.data.profile._json.displayName;
-          console.log(response.data.profile._json.displayName);
-          // when the response is available
-        }, function errorCallback(response) {
-          // called asynchronously if an error occurs
-          // or server returns response with an error status.
-        });
+        // this callback will be called asynchronously
+        console.log("getting user info");
+        $scope.eve.user = response.data.profile._json.displayName;
+        console.log(response.data.profile._json.displayName);
+        // when the response is available
+      }, function errorCallback(response) {
+        // called asynchronously if an error occurs
+        // or server returns response with an error status.
+      });
 
     };
 
@@ -241,11 +268,66 @@ angular.module('eventsInfo', [])
       return '';
     };
 
-    $scope.getEventDataButton =  function() {
-      Eventstored.getData().then(function(events) {
-        var formattedEvents = Eventstored.formatData(events);
+    $scope.getEventDataButton = function() {
+      Eventstored.getAllData().then(function(events) {
+        var formattedEvents = Eventstored.formatAllData(events);
         console.log(formattedEvents);
       });
-  
     };
+
+    $scope.refreshAllEvents = function() {
+      Eventstored.getAllData().then(function(events) {
+
+
+        var allEvents = events.data;
+        //console.log(allEvents);
+        var today = moment().dayOfYear();
+
+        for (var i = 0; i < allEvents.length; i++) {
+          var eachDib = moment(allEvents[i].eventDate).dayOfYear();
+          var diff = eachDib - today;
+          allEvents[i].diff = diff;
+          //console.log('This is the flag', diff);
+        }
+        var formattedEvents = Eventstored.formatAllData(events);
+        $scope.bookedEvents = formattedEvents;
+      });
+    };
+
+    $scope.renderSideDashboardChart = function() {
+
+      Eventstored.getAllData().then(function successCallback(events) {
+        var allEvents = events.data;
+        //console.log(allEvents);
+        var today = moment().dayOfYear();
+
+        for (var i = 0; i < allEvents.length; i++) {
+          var eachDib = moment(allEvents[i].eventDate).dayOfYear();
+          var diff = eachDib - today;
+          allEvents[i].diff = diff;
+          //console.log('This is the flag', diff);
+        }
+        var formattedEvents = Eventstored.formatAllData(events);
+        // $scope.bookedEvents = formattedEvents;
+      }, function errorCallback(response) {
+
+        //do not have access to events resource
+        //user must not be logged in
+        //redirect to signup
+
+        $state.go('signupPage');
+
+        console.log("RESPONSE", response);
+
+      });
+
+      // removing past daily dibs every 30s
+      //$scope.refreshEvents();
+    };
+
+    $scope.renderSideDashboardChart2 = function() {
+      $state.go('dashboardPage.eventsChart');
+    };
+
+
   });
