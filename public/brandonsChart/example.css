@@ -1,5 +1,4 @@
 .chart {
-  font-family: Arial, sans-serif;
   font-size: 12px;
 }
 
@@ -10,21 +9,5 @@
 }
 
 .bar {
-  fill: #33b5e5;
-}
 
-.bar-failed {
-  fill: #CC0000;
-}
-
-.bar-running {
-  fill: #669900;
-}
-
-.bar-succeeded {
-  fill: #33b5e5;
-}
-
-.bar-killed {
-  fill: #ffbb33;
 }

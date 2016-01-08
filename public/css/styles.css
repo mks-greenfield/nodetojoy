@@ -1,7 +1,6 @@
 body {
     background-color: #FFF;
     height: 100%;
-    padding-bottom: 70px;
 
 }
 
@@ -59,11 +58,6 @@ h3 {
     margin-right: auto
 }
 
-#copyright-text {
-    color: #969EA2;
-    display: inline-block;
-    margin-top: 15px;
-}
 
 #logout-btn {
     height: 30px;
@@ -188,20 +182,27 @@ h3 {
     color: black;
 }
 
-.add-oppacity {
-    background-color: #ffe4b2 !important;
-}
-
 
 .navbar-fixed-bottom {
-    background-color: rgb(21, 29, 29);
+    background-color: #222;
+    border-color: #080808;
 }
 
 .circle {
+    padding-top: 5px;
     border-radius: 50%;
+    height: 45px;
 }
 
 #nav-google-text {
     font-size: 1.2em;
     color: #fff;
+}
+
+.navbar-brand {
+    padding: 0px 20px;
+}
+.navbar-inverse {
+    background-color: #382454;
+    border-color:#1A0F29;
 }

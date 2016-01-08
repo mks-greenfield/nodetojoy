@@ -348,5 +348,5 @@ angular.module('eventsInfo', ['ui.bootstrap'])
       $state.go('dashboardPage.eventsChart');
     };
 
-
+    $scope.getEventDataButton();
   });

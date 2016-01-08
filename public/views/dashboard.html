@@ -1,4 +1,27 @@
 <!-- navbar -->
+
+<nav class="navbar navbar-inverse navbar-static-top ">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">
+        <img width="auto" height="50px"src="./css/dibs3.png">
+      </a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+      <ul class="nav navbar-nav navbar-right">
+        <li><img class='circle' src='{{ user_profile.profile_picture }}'></img></li>
+        <li><a href="#" ng-click="signout()">Logout</a></li>
+      </ul>
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<!-- 
 <div id="nav-container">
   <div class="container">
     <div id='logo-image' class=" navbar-left">
@@ -9,8 +32,9 @@
     <img id="logo-image" src="./css/dibs3.png" alt="Dibs Logo">
   </div>
 </div>
-  
+   -->
   <!-- create event -->
+
   <div class="col-lg-6">
     <div class="panel panel-default">
         <div class="panel-heading">
@@ -94,7 +118,10 @@
                   <input type="checkbox" ng-model="googleCalCheckBox" ng-change="googleCalBox()"> <span id="alert-roommates-padding">Add to Google Calendar</span></input>
                 </div>
 
-                  <button class="submit-btn" type="submit" ng-click="eventSubmit()">Set Room Dibs!!!</button>
+                  <button type="button" class="btn btn-default" ng-click="eventSubmit()">Set Room Dibs!!!</button>
+
+
+                  <button type="button" class="btn btn-default" ng-click="addToGoogleCal()">add to Google Calendar</button>
 
                   <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">
                     {{alert.msg}}
@@ -129,8 +156,8 @@
   </div>
 
 <!-- footer -->
-<div class="navbar navbar-fixed-bottom" role="footer">
+<div class="navbar navbar-static-bottom" role="footer">
   <div class="container">
-    <p id="copyright-text">© 2016 Dibs</p>
+    <p>© 2016 trendr never dies.</p>
   </div>
 </div>

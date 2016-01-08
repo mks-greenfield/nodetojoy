@@ -14,10 +14,11 @@ d3.gantt = function() {
   var timeDomainStart = d3.time.day.offset(new Date(), -3);
   var timeDomainEnd = d3.time.hour.offset(new Date(), +3);
   var timeDomainMode = FIT_TIME_DOMAIN_MODE; // fixed or fit
+  var col = d3.scale.category10();
   var taskTypes = [];
   var taskStatus = [];
-  var height = 300 /*document.body.clientHeight - margin.top - margin.bottom - 5;*/
-  var width = 400 /*document.body.clientWidth - margin.right - margin.left - 5;*/
+  var height = $('#events-sidebar.panel.panel-default').height() - 50; /*document.body.clientHeight - margin.top - margin.bottom - 5;*/
+  var width = $('#events-sidebar.panel.panel-default').width() - 100; /*document.body.clientWidth - margin.right - margin.left - 5;*/
 
   var tickFormat = "%H:%M";
 
@@ -86,6 +87,7 @@ d3.gantt = function() {
       .append("rect")
       .attr("rx", 5)
       .attr("ry", 5)
+      .attr("fill", function(d){ return col(d.status)})
       .attr("class", function(d) {
         if (taskStatus[d.status] == null) {
           return "bar";
@@ -128,6 +130,7 @@ d3.gantt = function() {
       .insert("rect", ":first-child")
       .attr("rx", 5)
       .attr("ry", 5)
+      .attr("fill", function(d){ return col(d.status)})
       .attr("class", function(d) {
         if (taskStatus[d.status] == null) {
           return "bar";
@@ -233,12 +236,10 @@ d3.gantt = function() {
   return gantt;
 };
 
-
 example();
 
-
 function example() {
-
+  $('#brandonChart').empty();
   // var tasks = [{
   //   "startDate": new Date("Sun Dec 09 01:36:45 2012"),
   //   "endDate": new Date("Sun Dec 09 02:36:45 2012"),
@@ -283,7 +284,7 @@ function example() {
   // Think about where to populateTask().  Maybe when you click the switch view button.
   populateTasks(GLOBALVAR);
 
-  var taskStatus = {
+  /*var taskStatus = {
     "Brandon": "bar",
     "Geetha": "bar-failed",
     "Kevin": "bar-running",
@@ -292,8 +293,8 @@ function example() {
     "Simon Ding": "bar-failed"
     // must add all new database usernames to here.  the values represent a css color.
   };
-
-  var taskNames = ["Kitchen", "Living Room", "Entire House"];
+*/
+  var taskNames = ["Kitchen", "Living Room", "Entire House", "Water Closet", "Observatory"];
 
   tasks.sort(function(a, b) {
     return a.endDate - b.endDate;
@@ -306,7 +307,11 @@ function example() {
 
   var format = "%m/%e";
 
-  var gantt = d3.gantt().taskTypes(taskNames).taskStatus(taskStatus).tickFormat(format);
+  var gantt = d3.gantt().taskTypes(taskNames)./*taskStatus(taskStatus).*/tickFormat(format);
   gantt(tasks);
 
 };
+
+d3.select(window).on('resize', function() {
+  example();
+});

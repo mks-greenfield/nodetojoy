@@ -1,31 +1,25 @@
+var http = require('http');
 var express = require('express');
 var mongoose = require('mongoose');
+var middleware = require('./config/middleware.js');
 var app = express();
+var server = http.createServer(app);
+var database  = (process.env.MONGOLAB_URI || 'mongodb://localhost/dibbr');
 
-var uri  = (process.env.MONGOLAB_URI || 'mongodb://localhost/test');
-
-mongoose.connect(uri);
-
-var db = mongoose.connection;
-
-db.on("error", console.error.bind(console, 'connection error:'));
-
-db.once("open", function(callback) {
-  console.log("We've opened a connection");
+mongoose.connect(database, function(error) {
+  if (error) {
+    console.error("Database connection error");
+  } else {
+    console.log("We've opened a connection");
+  }
 });
 
-var server = require('http').createServer(app);
-
-var port = process.env.PORT || 3000;
-
-require('./config/routeconfig.js')(app, express);
-
-/*
-express.static is a function taking the path name as an argument
-takes care of entire client side
-*/
+middleware(app, express);
 
 app.use(express.static(__dirname +  "/../public"));
 
+var port = process.env.PORT || 3000;
 
-server.listen(port);
+server.listen(port, function() {
+  console.log('Listening on port', port);
+});
