@@ -1,19 +1,16 @@
 var eventModel = require('./eventModel.js');
 var Promise = require('bluebird');
 Promise.promisifyAll(require('mongoose'));
-//For Google Calendar
 var google = require('googleapis');
 var OAuth2 = google.auth.OAuth2;
 var oauth2Client = new OAuth2(process.env.CLIENT_ID,
   process.env.CLIENT_SECRET,
   "http://127.0.0.1:3000/auth/google/callback");
+var mailer = require('../config/mailer.js');
 
 module.exports = {
   postEvent: function(req, res) {
-    //checks if event already exists
     var token = req.headers["x-access-token"];
-    console.log("ACCESS TOKEN", token);
-
 
     eventModel.findOne({
       'eventDate': req.body.dibEvent.eventDate,
@@ -65,8 +62,10 @@ module.exports = {
         return;
       }
 
-      console.log('Event created: %s', event.htmlLink);
-      data = event.htmlLink;
+      var email = req.user.profile.emails[0].value;
+
+      mailer.sendMail(email, event.htmlLink);
+
       res.json(event.htmlLink);
     });
 
@@ -78,10 +77,6 @@ module.exports = {
 
   getEvent: function(req, res) {
     var token = req.headers["x-access-token"];
-    console.log("ACCESS TOKEN", token);
-    console.log("REQ SESSION", req.session);
-    console.log("REQ USER", req.user);
-
     eventModel.find({
         'eventDate': {
           $gte: new Date()
@@ -97,9 +92,6 @@ module.exports = {
 
   getAllEvents: function(req, res) {
     var token = req.headers["x-access-token"];
-    console.log("ACCESS TOKEN", token);
-    console.log("REQ SESSION", req.session);
-    console.log("REQ USER", req.user);
 
     eventModel.find()
       .sort({
