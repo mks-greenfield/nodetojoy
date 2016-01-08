@@ -1,16 +1,14 @@
 <div class="panel panel-default">
-    <div class="panel-heading">
-     Daily Dibs
-    </div>
+  <div class="panel-heading">
+    <i class="fa fa-newspaper-o fa-fw"></i> Daily Dibs
+  </div>
   <div class="panel-body">
-
     <div ng-controller="eventsController" class="panel panel-default" id="events-sidebar">
       <div id="event-wrapper">
-          <div ng-repeat='event in bookedEvents track by $index'>
-
-              <div ng-class="{'add-oppacity' : highlightEvents(event) }" class="panel panel-default event-block">
-                <h5>Room Name:<i> {{event.roomName}}</i></h5>
-                <h6>Dibs Start Date:<i> {{event.eventDate}} | {{event.eventTime}}</i><h6>
+        <div ng-repeat='event in bookedEvents track by $index'>
+          <div ng-class="{'add-oppacity' : highlightEvents(event) }" class="panel panel-default event-block">
+            <h5>Room Name:<i> {{event.roomName}}</i></h5>
+            <h6>Dibs Start Date:<i> {{event.eventDate}} | {{event.eventTime}}</i><h6>
                 <h6>Dibs End Date:<i> {{event.eventEndDate}} | {{event.eventEndTime}}</i><h6> 
                 <div ng-show="event.eventDescription" class="ng-hide">
                   <h6>Description:<i> {{event.eventDescription}}</i><h6>
