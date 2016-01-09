@@ -217,8 +217,8 @@ video {
 }
 
 #wood {
-  background: url("http://subtlepatterns2015.subtlepatterns.netdna-cdn.com/patterns/retina_wood.png");
-  background-image: url("http://subtlepatterns2015.subtlepatterns.netdna-cdn.com/patterns/retina_wood.png");
+  background: url("./css/retinaWood.png");
+  background-image: url("./css/retinaWood.png");
   background-position-x: initial;
   background-position-y: initial;
   background-size: initial;
