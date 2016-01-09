@@ -244,14 +244,8 @@ angular.module('dibs.dashboard', ['ui.bootstrap'])
     };
 
     $scope.getEventData = function() {
-<<<<<<< HEAD:public/js/modules/events.js
-      Eventstored.getAllData().then(function(events) {
-        var formattedEvents = Eventstored.formatAllData(events);
-        // console.log(formattedEvents);
-=======
       eventModel.getAllData().then(function(events) {
         var formattedEvents = eventModel.formatAllData(events);
->>>>>>> 5a49a85d44e5f53efef32c342abc9a55551b971c:public/js/controllers/events.js
         GLOBALVAR = formattedEvents;
       });
     };
