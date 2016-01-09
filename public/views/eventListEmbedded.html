@@ -1,16 +1,24 @@
 <div class="panel panel-default">
-    <div class="panel-heading">
-     Daily Dibs
+  <div class="panel-heading">
+    <i class="fa fa-newspaper-o fa-fw"></i> Event List
+    <div class="col-md-6 panel-primary" class="bs-callout bs-callout-info" ng-if="showIf()" ng-init="renderSideDashboard()" ui-view>
+        <!--9 make it for now that each event saved is displayed to this view  -->
     </div>
-  <div class="panel-body">
 
+
+      <div class="col-md-6 panel-primary" class="bs-callout bs-callout-warning" ng-if="hideIf()" ng-init="toggleSideDashboardChart()" ui-view>
+        <!--9 make it for now that each event saved is displayed to this view  -->
+
+      </div>
+    <button type="button" class="btn btn-danger" type="submit" ng-click="switchButton()">Switch View</button>
+  </div>
+  <div class="panel-body">
     <div ng-controller="eventsController" class="panel panel-default" id="events-sidebar">
       <div id="event-wrapper">
-          <div ng-repeat='event in bookedEvents track by $index'>
-
-              <div ng-class="{'add-oppacity' : highlightEvents(event) }" class="panel panel-default event-block">
-                <h5>Room Name:<i> {{event.roomName}}</i></h5>
-                <h6>Dibs Start Date:<i> {{event.eventDate}} | {{event.eventTime}}</i><h6>
+        <div ng-repeat='event in bookedEvents track by $index'>
+          <div ng-class="{'add-oppacity' : highlightEvents(event) }" class="panel panel-default event-block">
+            <h5>Room Name:<i> {{event.roomName}}</i></h5>
+            <h6>Dibs Start Date:<i> {{event.eventDate}} | {{event.eventTime}}</i><h6>
                 <h6>Dibs End Date:<i> {{event.eventEndDate}} | {{event.eventEndTime}}</i><h6> 
                 <div ng-show="event.eventDescription" class="ng-hide">
                   <h6>Description:<i> {{event.eventDescription}}</i><h6>
@@ -19,5 +27,6 @@
           </div>
       </div>    
     </div>
+    
   </div>
 </div>

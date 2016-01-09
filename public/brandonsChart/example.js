@@ -5,9 +5,9 @@ d3.gantt = function() {
   var FIXED_TIME_DOMAIN_MODE = "fixed";
 
   var margin = {
-    top: 50,
+    top: 10,
     right: 0,
-    bottom: 0,
+    bottom: 30,
     left: 75
   };
   var selector = '#brandonChart';
@@ -19,6 +19,15 @@ d3.gantt = function() {
   var taskStatus = [];
   var height = $('#events-sidebar.panel.panel-default').height() - 50; /*document.body.clientHeight - margin.top - margin.bottom - 5;*/
   var width = $('#events-sidebar.panel.panel-default').width() - 100; /*document.body.clientWidth - margin.right - margin.left - 5;*/
+
+  var tip = d3.tip()
+        .attr('class', 'd3-tip')
+        .offset([-5, 0])
+        .html(function(d, x) {
+          // console.log(d)
+          // console.log('x' + x)
+          return "<strong>Roommate:</strong> <span style='color:red'>" + d.status + "</span>";
+        });
 
   var tickFormat = "%H:%M";
 
@@ -87,6 +96,7 @@ d3.gantt = function() {
       .append("rect")
       .attr("rx", 5)
       .attr("ry", 5)
+      .attr("name", function(d){ return d.status })
       .attr("fill", function(d){ return col(d.status)})
       .attr("class", function(d) {
         if (taskStatus[d.status] == null) {
@@ -95,6 +105,8 @@ d3.gantt = function() {
         return taskStatus[d.status];
       })
       .attr("y", 0)
+      .on('mouseover', tip.show)
+      .on('mouseout', tip.hide)
       .attr("transform", rectTransform)
       .attr("height", function(d) {
         return y.rangeBand();
@@ -103,6 +115,7 @@ d3.gantt = function() {
         return (x(d.endDate) - x(d.startDate));
       });
 
+    svg.call(tip);
 
     svg.append("g")
       .attr("class", "x axis")
@@ -271,7 +284,7 @@ function example() {
 
   var populateTasks = function(formattedArr) {
     for (var i = 0; i < formattedArr.length; i++) {
-      console.log('FORMATTED ARR', formattedArr[i]);
+      // console.log('FORMATTED ARR', formattedArr[i]);
       tasks.push({
         startDate: new Date(formattedArr[i].startDate),
         endDate: new Date(formattedArr[i].endDate),
@@ -305,7 +318,7 @@ function example() {
   });
   var minDate = tasks[0].startDate;
 
-  var format = "%m/%e";
+  var format = "%a";
 
   var gantt = d3.gantt().taskTypes(taskNames)./*taskStatus(taskStatus).*/tickFormat(format);
   gantt(tasks);
