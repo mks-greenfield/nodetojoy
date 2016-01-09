@@ -318,7 +318,7 @@ function example() {
   });
   var minDate = tasks[0].startDate;
 
-  var format = "%d";
+  var format = "%a";
 
   var gantt = d3.gantt().taskTypes(taskNames)./*taskStatus(taskStatus).*/tickFormat(format);
   gantt(tasks);
