@@ -245,6 +245,7 @@ angular.module('dibs.dashboard', ['ui.bootstrap'])
 
     $scope.getEventData = function() {
       eventModel.getAllData().then(function(events) {
+        console.log('is it entering this function');
         var formattedEvents = eventModel.formatAllData(events);
         GLOBALVAR = formattedEvents;
       });
