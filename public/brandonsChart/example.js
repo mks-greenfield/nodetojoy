@@ -27,7 +27,7 @@ d3.gantt = function() {
           // console.log(d)
           // console.log('x' + x)
           return "<strong>Roommate:</strong> <span style='color:red'>" + d.status + "</span>";
-        })
+        });
 
   var tickFormat = "%H:%M";
 
