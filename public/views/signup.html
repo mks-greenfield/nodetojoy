@@ -1,41 +1,29 @@
 <!-- navbar -->
 <div class="header-container">
-  <div class="video-container">
-    <video autoplay="autoplay" loop="loop" onloadstart="this.volume=0">
-      <source src="./assets/newVidClip.mp4" type="video/mp4">
-    </video>
-  </div>
-  <div id="signup-container">
-    <div class="row">
-      <div class="col-md-5">
-        <div class="nav nav-list">
-          <div class="sideBar">
-            <h3>Sign In</h3>
-            <div id='signup'>
-              <form method='get' action='/auth/google' class="form-inline">
-                <button type="submit" class="btn btn-block btn-social btn-google">
-                  <span class="fa fa-google"></span>Sign in with Google</a>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-1"></div>
-      <div class="col-md-5" id="bannerText">
-        <h2>Pesky roommates<br> getting in your way?</h2>
-        <img id="logo-orange-image" src="./css/dibs3.png" alt="Dibs Logo">
-      </div>
-      <div class="col-md-1"></div>
-    </div>
-  </div>
-</div>
-<!--   <div id="nav-container">
-    <div class="container">
-      <img id="logo-image" src="./css/dibs3.png" alt="Dibs Logo">
-    </div>
-  </div> -->
-<div class="navbar navbar-fixed-bottom" role="footer" style="background-color: #f7f7f9">
-  <div class="container">
-    <p id="copyright-text">© 2016 Dibs</p>
-  </div>
+ <div class="video-container">
+   <video autoplay="autoplay" loop="loop" onloadstart="this.volume=0">
+     <source src="./assets/newVidClip.mp4" type="video/mp4">
+   </video>
+ </div>
+ <div id="signup-container">
+   <div class="row">
+     <div class="col-md-3"></div>
+     <div class="col-md-6" id="bannerText">
+       <h2 style="color:#c23321 ;">Pesky roommates<br> getting in your way...<br></h2><h1><strong><i>...still?</i></strong></h1>
+       <img id="logo-orange-image" src="./css/dibs3.png" alt="Dibs Logo">
+       <div class="nav nav-list">
+         <div class="sideBar">
+           <h3 style="color:#c23321 ;">Sign In</h3>
+           <div id='signup'>
+             <form method='get' action='/auth/google' class="form-inline">
+               <button type="submit" class="btn btn-block btn-social btn-google">
+                 <span class="fa fa-google"></span>Sign in with Google</a>
+             </form>
+           </div>
+         </div>
+       </div>
+     </div>
+     <div class="col-md-3"></div>
+   </div>
+ </div>
 </div>

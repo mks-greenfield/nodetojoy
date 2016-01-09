@@ -19,16 +19,8 @@ h3 {
     margin: 10px 0 30px 0;
 }
 
-.container {
-    padding-left: 15%;
-    padding-right: 15%;
-}
 
-#signup-container {
-    margin-top: 50px;
-    padding-left: 15%;
-    padding-right: 15%;
-}
+
 
 #nav-container {
     background-color: #278D8E;
@@ -78,12 +70,13 @@ h3 {
 
 
 .sideBar {
-    background-color: #f7f7f9;
-    border: 1px solid #DADFE2;
+    background-color: rgba(247, 247, 249, 0.7);
+    border: 3px solid #DADFE2;
     border-radius: 3px;
     padding-left: 15px;
     padding-right: 15px;
     padding-bottom: 20px;
+    padding-top: 15px;
     margin-top: 20px;
 }
 
@@ -204,7 +197,7 @@ h3 {
 
 .header-container {
     width: 100%;
-    height: 900px;
+    height: 100vh;
     border-left: none;
     border-right: none;
     position: relative; 
@@ -234,4 +227,15 @@ video {
 .navbar-inverse {
     background-color: #382454;
     border-color:#1A0F29;
+}
+
+
+.btn-success {
+   background-color: #80BB80;
+}
+
+.btn-success:hover {
+    color: #fff;
+    background-color: #4cae4c;
+    border-color: #4cae4c;
 }

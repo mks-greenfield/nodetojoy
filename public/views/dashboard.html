@@ -1,15 +1,12 @@
-<!-- navbar -->
 
 <nav class="navbar navbar-inverse navbar-static-top ">
   <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <a class="navbar-brand" href="#">
         <img width="auto" height="50px"src="./css/dibs3.png">
       </a>
     </div>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
       <ul class="nav navbar-nav navbar-right">
@@ -17,11 +14,11 @@
         <li><a href="#" ng-click="signout()">Logout</a></li>
       </ul>
 
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
+    </div>
+  </div>
 </nav>
 
-<!-- 
+<!-- OLD NAVBAR 
 <div id="nav-container">
   <div class="container">
     <div id='logo-image' class=" navbar-left">
@@ -32,131 +29,127 @@
     <img id="logo-image" src="./css/dibs3.png" alt="Dibs Logo">
   </div>
 </div>
-   -->
-  <!-- create event -->
+-->
 
-  <div class="col-lg-6">
-    <div class="panel panel-default">
+<!-- New container -->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-5">
+      <div class="panel panel-primary">
         <div class="panel-heading">
-            <i class="fa fa-twitter fa-fw"></i> Create Dibs
+          <i class="fa fa-twitter fa-fw"></i>Create Dibs
         </div>
         <div class="panel-body">
-      
-            <div class="row">
 
-              <div class="col-lg-6">
-                <div class="panel panel-default">
-                    <div class="panel-heading" style="text-align:center">
-                      <i class="fa fa-hourglass-start fa-fw"></i>Start Date
-                    </div>
-                    <div class="panel-body">
-
-                    <div class="input-group">
-                      <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="eve.eventDate" is-open="status.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
-                      <span class="input-group-btn">
-                        <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-                      </span>
-                    </div>
-
-                    <div class="timePicker">
-                      <div class="timePickerLeft">
-                        <uib-timepicker ng-model="eve.eventDate" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian" class='centerTime'></uib-timepicker>
-                      </div>
-                    </div>
-
-                  </div>
-                </div>
+          <div class="col-md-6">
+            <div class="panel panel-default">
+              <div class="panel-heading" style="text-align:center">
+                <i class="fa fa-hourglass-start fa-fw"></i>Start Date
               </div>
+              <div class="panel-body">
 
-              <div class="col-lg-6">
-                <div class="panel panel-default">
-                  <div class="panel-heading" style="text-align:center">
-                    <i class="fa fa-hourglass-end fa-fw"></i>End Date
-                  </div>
-                  
-                  <div class="panel-body">
-
-                    <div class="input-group">
-                      <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="eve.eventEndDate" is-open="status.opened2" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
-                      <span class="input-group-btn">
-                        <button type="button" class="btn btn-default" ng-click="openEnd($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-                      </span>
-                    </div>
-
-                    <div class="timePicker">
-                      <div class="timePickerLeft">
-                        <uib-timepicker ng-model="eve.eventEndDate" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian" class='centerTime'></uib-timepicker>
-                      </div>
-                    </div>
-
-                  </div>
-                </div>
-              </div>
-            <!-- end date picker row -->
-            </div>
-
-            <div class="row">
-              <div class="col-lg-12">
-                <div class="panel panel-default">
-                  <div class="panel-body">
-
-                  <h4>Pick a room</h4>
-                  <div class="btn-group" role="group" aria-label="...">
-                    <button type="button" class="btn btn-default" ng-model="eve.roomName" uib-btn-radio="'Kitchen'">Kitchen</button>
-                    <button type="button" class="btn btn-default" ng-model="eve.roomName" uib-btn-radio="'Living Room'">Living Room</button>
-                    <button type="button" class="btn btn-default" ng-model="eve.roomName" uib-btn-radio="'Entire House'">Entire House</button>
-                    <button type="button" class="btn btn-default" ng-model="eve.roomName" uib-btn-radio="'Water Closet'">Water Closet</button>
-                    <button type="button" class="btn btn-default" ng-model="eve.roomName" uib-btn-radio="'Observatory'">Observatory</button>
-                  </div>
-
-                  <h4>Event Description</h4>
-                  <div>
-                    <input class="standardInputStyling" ng-model="eve.eventDescription" placeholder="Your event blurb...!"></input>
-                  </div>
-
-                <div>
-                  <input type="checkbox" ng-model="googleCalCheckBox" ng-change="googleCalBox()"> <span id="alert-roommates-padding">Add to Google Calendar</span></input>
+                <div class="input-group">
+                  <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="eve.eventDate" is-open="status.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+                  <span class="input-group-btn">
+                    <button type="button" class="btn btn-warning" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                  </span>
                 </div>
 
-                  <button type="button" class="btn btn-default" ng-click="eventSubmit()">Set Room Dibs!!!</button>
-
-
-                  <button type="button" class="btn btn-default" ng-click="addToGoogleCal()">add to Google Calendar</button>
-
-                  <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">
-                    {{alert.msg}}
-                    <a href={{alert.url}} target="_blank">here</a>
-                  </uib-alert>
-
+                <div class="timePicker">
+                  <div class="timePickerLeft">
+                    <uib-timepicker ng-model="eve.eventDate" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian" class='centerTime'></uib-timepicker>
                   </div>
                 </div>
+
               </div>
             </div>
+          </div>
+
+
+          <div class="col-md-6">
+            <div class="panel panel-default">
+              <div class="panel-heading" style="text-align:center">
+                <i class="fa fa-hourglass-end fa-fw"></i>End Date
+              </div>
+              
+              <div class="panel-body">
+
+                <div class="input-group">
+                  <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="eve.eventEndDate" is-open="status.opened2" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+                  <span class="input-group-btn">
+                    <button type="button" class="btn btn-warning" ng-click="openEnd($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                  </span>
+                </div>
+
+                <div class="timePicker">
+                  <div class="timePickerLeft">
+                    <uib-timepicker ng-model="eve.eventEndDate" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian" class='centerTime'></uib-timepicker>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          
+         
+          <h4>Pick a room</h4>
+
+          <div class="btn-group" role="group" aria-label="...">
+            <button type="button" class="btn btn-success" ng-model="eve.roomName" uib-btn-radio="'Kitchen'">Kitchen</button>
+            <button type="button" class="btn btn-success" ng-model="eve.roomName" uib-btn-radio="'Living Room'">Living Room</button>
+            <button type="button" class="btn btn-success" ng-model="eve.roomName" uib-btn-radio="'Entire House'">Entire House</button>
+            <button type="button" class="btn btn-success" ng-model="eve.roomName" uib-btn-radio="'Water Closet'">Water Closet</button>
+            <button type="button" class="btn btn-success" ng-model="eve.roomName" uib-btn-radio="'Observatory'">Observatory</button>
+          </div>
+
+          <h4>Event Description</h4>
+
+          <div>
+            <input class="standardInputStyling" ng-model="eve.eventDescription" placeholder="Your event blurb...!"></input>
+          </div>
+
+          <div class="checkbox">
+            <label>
+              <input type="checkbox" ng-model="googleCalCheckBox" ng-change="googleCalBox()"> Add to Google Calendar</input>
+            </label>
+          </div>
+
+          <button type="button" class="btn btn-danger" ng-click="eventSubmit()">Set Room Dibs!!!</button>
+
+          <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">
+            {{alert.msg}}
+            <a href={{alert.url}} target="_blank">here</a>
+          </uib-alert>
+
+         
 
         </div>
-    </div> 
-  </div>
-  <!-- end create event -->
-
-  <!--  display event -->
-  <div class="container">
-    <div class="row">
-
-      <div class="col-md-6" class="bs-callout bs-callout-info" ng-if="showIf()" ng-init="renderSideDashboard()" ui-view>
-        <!--9 make it for now that each event saved is displayed to this view  -->
       </div>
+    </div>
 
-      <div class="col-md-6" class="bs-callout bs-callout-warning" ng-if="hideIf()" ng-init="renderSideDashboardChart2()" ui-view>
+
+
+    <div class="col-md-6 panel-primary" class="bs-callout bs-callout-info" ng-if="showIf()" ng-init="renderSideDashboard()" ui-view>
         <!--9 make it for now that each event saved is displayed to this view  -->
+    </div>
+
+
+      <div class="col-md-6 panel-primary" class="bs-callout bs-callout-warning" ng-if="hideIf()" ng-init="toggleSideDashboardChart()" ui-view>
+        <!--9 make it for now that each event saved is displayed to this view  -->
+
       </div>
       
-      <button type="button" class="btn btn-default" type="submit" ng-click="switchButton()">Switch View</button>
-    </div>
-  </div>
+      <button type="button" class="btn btn-danger" type="submit" ng-click="switchButton()">Switch View</button>
 
-<!-- footer -->
+    </div>
+      
+
+
+  </div>
+</div>
+
 <div class="navbar navbar-static-bottom" role="footer">
   <div class="container">
-    <p>© 2016 trendr never dies.</p>
+    <p>© 2016 DibsII.</p>
   </div>
 </div>

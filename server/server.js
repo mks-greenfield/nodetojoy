@@ -8,7 +8,7 @@ var database  = (process.env.MONGOLAB_URI || 'mongodb://localhost/dibbr');
 
 mongoose.connect(database, function(error) {
   if (error) {
-    console.error("Database connection error");
+    console.error("Database connection error ", error);
   } else {
     console.log("We've opened a connection");
   }
