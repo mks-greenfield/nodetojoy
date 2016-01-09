@@ -10,6 +10,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
       <ul class="nav navbar-nav navbar-right">
+        <li><a>Welcome, {{user_profile.user_name }}</a></li>
         <li><a href="#" ng-click="signout()">Logout</a></li>
         <li><img class='circle' src='{{ user_profile.profile_picture }}'></img></li>
       </ul>
@@ -129,12 +130,12 @@
 
 
 
-    <div class="col-md-6 panel-primary" class="bs-callout bs-callout-info" ng-if="showIf()" ng-init="renderSideDashboard()" ui-view>
+    <div class="col-md-6" class="bs-callout bs-callout-info" ng-if="showIf()" ng-init="renderSideDashboard()" ui-view>
         <!--9 make it for now that each event saved is displayed to this view  -->
     </div>
 
 
-      <div class="col-md-6 panel-primary" class="bs-callout bs-callout-warning" ng-if="hideIf()" ng-init="toggleSideDashboardChart()" ui-view>
+      <div class="col-md-6" class="bs-callout bs-callout-warning" ng-if="hideIf()" ng-init="toggleSideDashboardChart()" ui-view>
         <!--9 make it for now that each event saved is displayed to this view  -->
 
       </div>
@@ -148,8 +149,3 @@
   </div>
 </div>
 
-<div class="navbar navbar-static-bottom" role="footer">
-  <div class="container">
-    <p><strong>© 2016 Dibs II</strong></p>
-  </div>
-</div>

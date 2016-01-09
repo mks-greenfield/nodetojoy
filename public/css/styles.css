@@ -172,16 +172,11 @@ h3 {
 }
 
 .circle {
-<<<<<<< HEAD
     padding-top: 5px;
     border-radius: 50%;
     height: 45px;
     padding-right: 10px;
-=======
-  padding-top: 5px;
-  border-radius: 50%;
-  height: 45px;
->>>>>>> 5c67bcfb9f7270994a8e9f06abc5bd2fad0b2929
+
 }
 
 #nav-google-text {
@@ -219,7 +214,7 @@ video {
 }
 
 .navbar-inverse {
-  background-color: #382454;
+  background-color: #1A4163;
   border-color: #1A0F29;
 }
 
