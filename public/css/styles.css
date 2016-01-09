@@ -229,3 +229,14 @@ video {
   background-clip: initial;
   background-color: initial;
 }
+
+
+.btn-success {
+   background-color: #80BB80;
+}
+
+.btn-success:hover {
+    color: #fff;
+    background-color: #4cae4c;
+    border-color: #4cae4c;
+}
