@@ -34,7 +34,7 @@ angular.module('dibs.events', [])
         eventDates,
         formattedDate,
         eventTimes;
-      console.log("FORMAT DATA IN EVENTFACTORY.JS", events);
+      // console.log("FORMAT DATA IN EVENTFACTORY.JS", events);
 
       eventsCollection.forEach(function(event) {
         eventDates = event.eventDate;
