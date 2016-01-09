@@ -289,7 +289,7 @@ angular.module('eventsInfo', ['ui.bootstrap'])
     $scope.getEventData = function() {
       Eventstored.getAllData().then(function(events) {
         var formattedEvents = Eventstored.formatAllData(events);
-        console.log(formattedEvents);
+        // console.log(formattedEvents);
         GLOBALVAR = formattedEvents;
       });
     };

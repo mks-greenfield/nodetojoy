@@ -24,9 +24,8 @@ d3.gantt = function() {
         .attr('class', 'd3-tip')
         .offset([-5, 0])
         .html(function(d, x) {
-          console.log(d)
-          console.log('x' + x)
-
+          // console.log(d)
+          // console.log('x' + x)
           return "<strong>Roommate:</strong> <span style='color:red'>" + d.status + "</span>";
         })
 
@@ -285,7 +284,7 @@ function example() {
 
   var populateTasks = function(formattedArr) {
     for (var i = 0; i < formattedArr.length; i++) {
-      console.log('FORMATTED ARR', formattedArr[i]);
+      // console.log('FORMATTED ARR', formattedArr[i]);
       tasks.push({
         startDate: new Date(formattedArr[i].startDate),
         endDate: new Date(formattedArr[i].endDate),
