@@ -219,8 +219,8 @@ video {
 }
 
 #wood {
-  background: url("./css/retinaWood.png");
-  background-image: url("./css/retinaWood.png");
+  background: url("../assets/retinaWood.png");
+  background-image: url("../assets/retinaWood.png");
   background-position-x: initial;
   background-position-y: initial;
   background-size: initial;
