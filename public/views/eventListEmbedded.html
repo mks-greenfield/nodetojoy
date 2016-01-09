@@ -1,6 +1,16 @@
 <div class="panel panel-primary">
   <div class="panel-heading">
-    <i class="fa fa-newspaper-o fa-fw"></i> Daily Dibs
+    <i class="fa fa-newspaper-o fa-fw"></i> Event List
+    <div class="col-md-6 panel-primary" class="bs-callout bs-callout-info" ng-if="showIf()" ng-init="renderSideDashboard()" ui-view>
+        <!--9 make it for now that each event saved is displayed to this view  -->
+    </div>
+
+
+      <div class="col-md-6 panel-primary" class="bs-callout bs-callout-warning" ng-if="hideIf()" ng-init="toggleSideDashboardChart()" ui-view>
+        <!--9 make it for now that each event saved is displayed to this view  -->
+
+      </div>
+    <button type="button" class="btn btn-danger" type="submit" ng-click="switchButton()">Switch View</button>
   </div>
   <div class="panel-body">
     <div ng-controller="eventsController" class="panel panel-default" id="events-sidebar">

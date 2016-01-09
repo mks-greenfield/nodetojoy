@@ -30,6 +30,7 @@
     "d3": "^3.5.12",
     "moment": "~2.11.0",
     "bootstrap-social": "~4.12.0",
-    "bootstrap-toggle": "~2.2.1"
+    "bootstrap-toggle": "~2.2.1",
+    "d3-tip": "~0.6.7"
   }
 }
