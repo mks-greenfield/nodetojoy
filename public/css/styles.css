@@ -187,6 +187,7 @@ h3 {
     padding-top: 5px;
     border-radius: 50%;
     height: 45px;
+    padding-right: 10px;
 }
 
 #nav-google-text {
@@ -238,4 +239,9 @@ video {
     color: #fff;
     background-color: #4cae4c;
     border-color: #4cae4c;
+}
+
+.navbar{
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
