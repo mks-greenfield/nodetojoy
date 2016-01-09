@@ -172,9 +172,11 @@ h3 {
 }
 
 .circle {
-  padding-top: 5px;
-  border-radius: 50%;
-  height: 45px;
+    padding-top: 5px;
+    border-radius: 50%;
+    height: 45px;
+    padding-right: 10px;
+
 }
 
 #nav-google-text {
@@ -212,13 +214,13 @@ video {
 }
 
 .navbar-inverse {
-  background-color: #382454;
+  background-color: #1A4163;
   border-color: #1A0F29;
 }
 
 #wood {
-  background: url("http://subtlepatterns2015.subtlepatterns.netdna-cdn.com/patterns/retina_wood.png");
-  background-image: url("http://subtlepatterns2015.subtlepatterns.netdna-cdn.com/patterns/retina_wood.png");
+  background: url("../assets/retinaWood.png");
+  background-image: url("../assets/retinaWood.png");
   background-position-x: initial;
   background-position-y: initial;
   background-size: initial;
@@ -239,4 +241,9 @@ video {
     color: #fff;
     background-color: #4cae4c;
     border-color: #4cae4c;
+}
+
+.navbar{
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
